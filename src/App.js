@@ -25,9 +25,11 @@ export default function App(){
             })
             // Turn response back into a JavaScript object
             const data = await response.json()
+            // From the "data" response received, pull out the user object and set the user state
             setUser(data.user)
+            // From the "data" response received, pull out the token object and set the token state
             setToken(data.token)
-            // Store the item in localStorage
+            // Store the token in localStorage
             localStorage.setItem('token', data.token)
         } catch (error) {
             console.error(error)
