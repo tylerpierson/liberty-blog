@@ -13,9 +13,9 @@ app.use((req, res, next) => {
 app.use(logger('dev'))
 app.use(favicon(path.join(__dirname, 'public', 'img','logo.png')))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/api/blogs', require('./routes/api/blogs'))
-app.use('/api/users', require('./routes/api/users'))
-// http://localhost:8000/api/todos/completed
+app.use('/api/blogs', require('./routes/api/blogs')) // I am listening for any route that starts with api/blogs
+app.use('/api/users', require('./routes/api/users')) // I am listening for any route that starts with api/users
+// http://localhost:8000/api/...
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
