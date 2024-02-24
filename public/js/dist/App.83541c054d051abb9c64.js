@@ -292,6 +292,9 @@ function SignUpForm(props) {
     onChange: handleChange,
     value: credentials.password,
     placeholder: "Password"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "submit",
+    value: "submit"
   }));
 }
 
@@ -697,4 +700,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.ae06543d12a33767a2db604e2ff386d1.js.map
+//# sourceMappingURL=App.f95f45850df8f6dd6e4e8d4f3079138b.js.map

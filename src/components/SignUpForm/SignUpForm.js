@@ -21,6 +21,7 @@ export default function SignUpForm (props){
             <input type='text' name='name' onChange={handleChange} value={credentials.name} placeholder='Name' />
             <input type='email' name='email' onChange={handleChange} value={credentials.email} placeholder='Email' />
             <input type='password' name='password' onChange={handleChange} value={credentials.password} placeholder='Password' />
+            <input type='submit' value='submit' />
         </form>
     )
 }
