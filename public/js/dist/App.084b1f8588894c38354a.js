@@ -45,10 +45,137 @@ function App() {
       });
       // Turn response back into a JavaScript object
       const data = await response.json();
+      // From the "data" response received, pull out the user object and set the user state
       setUser(data.user);
+      // From the "data" response received, pull out the token object and set the token state
       setToken(data.token);
-      // Store the item in localStorage
+      // Store the token in localStorage
       localStorage.setItem('token', data.token);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // This function will need to be a prop passed to the LoginForm via AuthPage
+  const login = async credentials => {
+    try {
+      // https://i.imgur.com/3quZxs4.png
+      // Step 1 is complete here once someone fills out the loginForm
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      });
+      const data = await response.json();
+      // Step 3
+      const tokenData = data.token;
+      localStorage.setItem('token', tokenData);
+      // The below code is additional to the core features of authentication
+      // You need to decide what additional things you would like to accomplish when you
+      // set up your stuff
+      const userData = data.user;
+      localStorage.setItem('user', userData);
+      setUser(userData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // CreateBlog
+  // We need token authentication in order to verify that someone can make a blog
+  // Now that we have the token from the signup/login above, we will pass it into the following functions for authentication
+  const createBlog = async (blogData, token) => {
+    // https://i.imgur.com/3quZxs4.png
+    // Step 4
+    if (!token) {
+      return;
+    }
+    try {
+      const response = await fetch('/api/blogs', {
+        method: 'POST',
+        headers: {
+          // This part is only necessary when sending data, not when retrieving it, i.e. GET requests
+          // Tell it that we're sending JSON data
+          'Content-Type': 'application/json',
+          // Tell it that we have a user token
+          'Authorization': "Bearer ".concat(token)
+        },
+        body: JSON.stringify(blogData)
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // ReadBlog - we don't need authentication
+  const getAllBlogs = async () => {
+    try {
+      const response = await fetch('/api/blogs');
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Show and individual blog - no need for authentication
+  const getIndividualBlog = async id => {
+    try {
+      const response = await fetch("/api/blogs/".concat(id));
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // UpdateBlog
+  const updateBlog = async (newBlogData, id, token) => {
+    // https://i.imgur.com/3quZxs4.png
+    // Step 4
+    if (!token) {
+      return;
+    }
+    try {
+      const response = await fetch("/api/blogs/".concat(id), {
+        method: 'PUT',
+        headers: {
+          // This part is only necessary when sending data, not when retrieving it, i.e. GET requests
+          // Tell it that we're sending JSON data
+          'Content-Type': 'application/json',
+          // Tell it that we have a user token
+          'Authorization': "Bearer ".concat(token)
+        },
+        body: JSON.stringify(newBlogData)
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // DeleteBlog
+  const deleteBlog = async (id, token) => {
+    // https://i.imgur.com/3quZxs4.png
+    // Step 4
+    if (!token) {
+      return;
+    }
+    try {
+      const response = await fetch("/api/blogs/".concat(id), {
+        method: 'DELETE',
+        headers: {
+          // Don't need content-type because we are not sending any data
+          'Authorization': "Bearer ".concat(token)
+        }
+      });
+      const data = await response.json();
+      return data;
     } catch (error) {
       console.error(error);
     }
@@ -56,31 +183,52 @@ function App() {
   return /*#__PURE__*/React.createElement("div", {
     className: _App_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].App
   }, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Routes, null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
-    path: "/",
+    path: "/"
+    // What is needed on this page:
+    //     Get all Blog posts when the component mounts 
+    //     Create an individual Blog post
+    ,
     element: /*#__PURE__*/React.createElement(_pages_HomePage_HomePage__WEBPACK_IMPORTED_MODULE_2__["default"]
     // Pass user, token, && setToken props down to HomePage
     , {
       user: user,
-      token: token,
-      setToken: setToken
+      token: token
+      // nameOfTheProp={nameOfTheFunction}
+      ,
+      setToken: setToken,
+      createBlog: createBlog,
+      getAllBlogs: getAllBlogs
     })
   }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
-    path: "/register",
+    path: "/register"
+    // What is needed on this page:
+    //     User needs to be able to signUp
+    //     User needs to be able to Login
+    ,
     element: /*#__PURE__*/React.createElement(_pages_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_1__["default"]
     // Pass setUser, setToken && signUp props down to AuthPage
     , {
       setUser: setUser,
       setToken: setToken,
-      signUp: signUp
+      signUp: signUp,
+      login: login
     })
   }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
-    path: "/blog",
+    path: "/blog"
+    // What is needed on this page:
+    //     Be able to GET an individual blog
+    //     Be able to UPDATE blog
+    //     Be able to DELETE blog
+    ,
     element: /*#__PURE__*/React.createElement(_pages_ShowPage_ShowPage__WEBPACK_IMPORTED_MODULE_3__["default"]
     // Pass user, token, && setToken props down to HomePage
     , {
       user: user,
       token: token,
-      setToken: setToken
+      setToken: setToken,
+      getIndividualBlog: getIndividualBlog,
+      updateBlog: updateBlog,
+      deleteBlog: deleteBlog
     })
   })));
 }
@@ -473,4 +621,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.ce1169834d2123d443f1c329548bc6d8.js.map
+//# sourceMappingURL=App.9033838dcde682f841c9d22525601430.js.map
