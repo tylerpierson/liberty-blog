@@ -29,8 +29,9 @@ export default function App(){
             setUser(data.user)
             // From the "data" response received, pull out the token object and set the token state
             setToken(data.token)
-            // Store the token in localStorage
+            // Store the token && user in localStorage
             localStorage.setItem('token', data.token)
+            localStorage.setItem('user', JSON.stringify(data.user))
         } catch (error) {
             console.error(error)
         }
@@ -56,7 +57,7 @@ export default function App(){
             // You need to decide what additional things you would like to accomplish when you
             // set up your stuff
             const userData = data.user
-            localStorage.setItem('user', userData)
+            localStorage.setItem('user', JSON.stringify(userData))
             setUser(userData)
         } catch (error) {
             console.error(error)
@@ -175,6 +176,7 @@ export default function App(){
                     token={token} 
                     // nameOfTheProp={nameOfTheFunction}
                     setToken={setToken}
+                    setUser={setUser}
                     createBlog={createBlog}
                     getAllBlogs={getAllBlogs}
                 />}></Route>
