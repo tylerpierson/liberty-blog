@@ -35,7 +35,7 @@ export default function HomePage(props){
         <>
             <div>
                 <h1>Welcome to the Liberty Blog</h1>
-                { showCreate ? <CreateForm /> : <></> }
+                { showCreate ? <CreateForm user={props.user} createBlog={props.createBlog} token={props.token} /> : <></> }
                 { blogs.length ? <Blogs blogs={blogs} /> : 'Sorry, no blogs yet!'}
             </div>
         </>

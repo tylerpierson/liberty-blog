@@ -249,9 +249,55 @@ function Blogs(props) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CreateForm)
 /* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 function CreateForm(props) {
-  return /*#__PURE__*/React.createElement("h1", null, "CreateForm");
+  const [formData, setFormData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    title: '',
+    body: ''
+  });
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      await props.createBlog(formData, props.token);
+      window.location.reload();
+      // cool thing to do once there is a show page done
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleChange = e => {
+    // Spread the formData in so that as you edit, the other edited fields remain in place
+    // In 'e.target.name' the 'name' refers to whichever target name you are currently clicked on, i.e. "email", "password"
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, {
+      [e.target.name]: e.target.value
+    }));
+  };
+  return /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/React.createElement("h2", null, "Create a New Blog Post, ", props.user.name), /*#__PURE__*/React.createElement("input", {
+    placeholder: "title",
+    type: "text",
+    name: "title",
+    value: formData.title,
+    onChange: handleChange
+  }), /*#__PURE__*/React.createElement("input", {
+    placeholder: "body",
+    type: "text",
+    name: "body",
+    value: formData.body,
+    onChange: handleChange
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "submit",
+    value: "Create Blog"
+  }));
 }
 
 /***/ }),
@@ -480,7 +526,11 @@ function HomePage(props) {
       props.setUser(JSON.parse(localStorage.getItem('user')));
     }
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Welcome to the Liberty Blog"), showCreate ? /*#__PURE__*/React.createElement(_components_CreateForm_CreateForm__WEBPACK_IMPORTED_MODULE_1__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null), blogs.length ? /*#__PURE__*/React.createElement(_components_Blogs_Blogs__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Welcome to the Liberty Blog"), showCreate ? /*#__PURE__*/React.createElement(_components_CreateForm_CreateForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    user: props.user,
+    createBlog: props.createBlog,
+    token: props.token
+  }) : /*#__PURE__*/React.createElement(React.Fragment, null), blogs.length ? /*#__PURE__*/React.createElement(_components_Blogs_Blogs__WEBPACK_IMPORTED_MODULE_2__["default"], {
     blogs: blogs
   }) : 'Sorry, no blogs yet!'));
 }
@@ -1004,4 +1054,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.786299fc6239d924d494d95d025db427.js.map
+//# sourceMappingURL=App.24984c622007460e47d76e03722bdebf.js.map
