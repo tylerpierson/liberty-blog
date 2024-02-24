@@ -13,12 +13,14 @@
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _pages_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/AuthPage/AuthPage */ "./src/pages/AuthPage/AuthPage.js");
-/* harmony import */ var _pages_HomePage_HomePage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/HomePage/HomePage */ "./src/pages/HomePage/HomePage.js");
-/* harmony import */ var _pages_ShowPage_ShowPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/ShowPage/ShowPage */ "./src/pages/ShowPage/ShowPage.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _App_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.module.scss */ "./src/App.module.scss");
+/* harmony import */ var _components_NavBar_NavBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/NavBar/NavBar */ "./src/components/NavBar/NavBar.js");
+/* harmony import */ var _pages_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/AuthPage/AuthPage */ "./src/pages/AuthPage/AuthPage.js");
+/* harmony import */ var _pages_HomePage_HomePage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/HomePage/HomePage */ "./src/pages/HomePage/HomePage.js");
+/* harmony import */ var _pages_ShowPage_ShowPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/ShowPage/ShowPage */ "./src/pages/ShowPage/ShowPage.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _App_module_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./App.module.scss */ "./src/App.module.scss");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
 
 
 
@@ -182,10 +184,10 @@ function App() {
     }
   };
   return /*#__PURE__*/React.createElement("div", {
-    className: _App_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].App
-  }, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Routes, null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    className: _App_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].App
+  }, /*#__PURE__*/React.createElement(_components_NavBar_NavBar__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/",
-    element: /*#__PURE__*/React.createElement(_pages_HomePage_HomePage__WEBPACK_IMPORTED_MODULE_2__["default"]
+    element: /*#__PURE__*/React.createElement(_pages_HomePage_HomePage__WEBPACK_IMPORTED_MODULE_3__["default"]
     // Pass user, token, && setToken props down to HomePage
     , {
       user: user,
@@ -197,9 +199,9 @@ function App() {
       createBlog: createBlog,
       getAllBlogs: getAllBlogs
     })
-  }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/register",
-    element: /*#__PURE__*/React.createElement(_pages_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/React.createElement(_pages_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__["default"]
     // Pass setUser, setToken && signUp props down to AuthPage
     , {
       setUser: setUser,
@@ -207,9 +209,9 @@ function App() {
       signUp: signUp,
       login: login
     })
-  }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/blog",
-    element: /*#__PURE__*/React.createElement(_pages_ShowPage_ShowPage__WEBPACK_IMPORTED_MODULE_3__["default"]
+    element: /*#__PURE__*/React.createElement(_pages_ShowPage_ShowPage__WEBPACK_IMPORTED_MODULE_4__["default"]
     // Pass user, token, && setToken props down to HomePage
     , {
       user: user,
@@ -219,7 +221,13 @@ function App() {
       updateBlog: updateBlog,
       deleteBlog: deleteBlog
     })
-  })));
+  })), token ? /*#__PURE__*/React.createElement("button", {
+    className: _App_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].button,
+    onClick: () => {
+      localStorage.removeItem('token');
+      window.location.reload();
+    }
+  }, "Logout") : '');
 }
 
 /***/ }),
@@ -322,6 +330,7 @@ function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" 
 function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
+
 function LoginForm(props) {
   const [credentials, setCredentials] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     email: '',
@@ -358,6 +367,26 @@ function LoginForm(props) {
     type: "submit",
     value: "submit"
   })));
+}
+
+/***/ }),
+
+/***/ "./src/components/NavBar/NavBar.js":
+/*!*****************************************!*\
+  !*** ./src/components/NavBar/NavBar.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ NavBar)
+/* harmony export */ });
+/* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function NavBar() {
+  return /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("a", {
+    href: "/"
+  }, /*#__PURE__*/React.createElement("li", null, "Home")), /*#__PURE__*/React.createElement("a", {
+    href: "/register"
+  }, /*#__PURE__*/React.createElement("li", null, "Login")));
 }
 
 /***/ }),
@@ -1054,4 +1083,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.24984c622007460e47d76e03722bdebf.js.map
+//# sourceMappingURL=App.86366514ff73e254d19914c37725bc8c.js.map

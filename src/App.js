@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import NavBar from './components/NavBar/NavBar'
 import AuthPage from './pages/AuthPage/AuthPage'
 import HomePage from './pages/HomePage/HomePage'
 import ShowPage from './pages/ShowPage/ShowPage'
@@ -164,6 +165,7 @@ export default function App(){
 
     return (
         <div className={styles.App}>
+            <NavBar />
             <Routes>
                 {/* What is needed on this page:
                     Get all Blog posts when the component mounts 
@@ -210,6 +212,18 @@ export default function App(){
                     deleteBlog={deleteBlog}
                 />}></Route>
             </Routes>
+            {
+            token ?
+            <button 
+            className={styles.button}
+            onClick={() => {
+                localStorage.removeItem('token')
+                window.location.reload()
+            }}>
+                Logout
+            </button>:
+            ''
+            }
         </div>
     )
 }
