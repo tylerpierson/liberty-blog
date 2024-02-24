@@ -164,23 +164,45 @@ export default function App(){
     return (
         <div className={styles.App}>
             <Routes>
-                <Route path='/' element={<HomePage 
+                <Route path='/' 
+                // What is needed on this page:
+                //     Get all Blog posts when the component mounts 
+                //     Create an individual Blog post
+                element={<HomePage 
                 // Pass user, token, && setToken props down to HomePage
                     user={user} 
                     token={token} 
+                    // nameOfTheProp={nameOfTheFunction}
                     setToken={setToken}
+                    createBlog={createBlog}
+                    getAllBlogs={getAllBlogs}
                 />}></Route>
-                <Route path='/register' element={<AuthPage 
+
+                <Route path='/register' 
+                // What is needed on this page:
+                //     User needs to be able to signUp
+                //     User needs to be able to Login
+                element={<AuthPage 
                 // Pass setUser, setToken && signUp props down to AuthPage
                     setUser={setUser}
                     setToken={setToken}
                     signUp={signUp}
+                    login={login}
                 />}></Route>
-                <Route path='/blog' element={<ShowPage 
+
+                <Route path='/blog' 
+                // What is needed on this page:
+                //     Be able to GET an individual blog
+                //     Be able to UPDATE blog
+                //     Be able to DELETE blog
+                element={<ShowPage 
                 // Pass user, token, && setToken props down to HomePage
                     user={user} 
                     token={token} 
                     setToken={setToken}
+                    getIndividualBlog={getIndividualBlog}
+                    updateBlog={updateBlog}
+                    deleteBlog={deleteBlog}
                 />}></Route>
             </Routes>
         </div>

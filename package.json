@@ -13,8 +13,10 @@
     "build:webpack": "webpack --mode production --define-process-env-node-env production",
     "dev": "gulp",
     "styles": "gulp styles",
-    "start": "node server.js"
+    "start": "node server.js",
+    "submit": "gulp submit"
   },
+  "proxy": "http://localhost:8000",
   "author": "",
   "license": "ISC",
   "devDependencies": {
