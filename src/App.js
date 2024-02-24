@@ -164,10 +164,11 @@ export default function App(){
     return (
         <div className={styles.App}>
             <Routes>
+                {/* What is needed on this page:
+                    Get all Blog posts when the component mounts 
+                    Create an individual Blog post
+                 */}
                 <Route path='/' 
-                // What is needed on this page:
-                //     Get all Blog posts when the component mounts 
-                //     Create an individual Blog post
                 element={<HomePage 
                 // Pass user, token, && setToken props down to HomePage
                     user={user} 
@@ -178,10 +179,11 @@ export default function App(){
                     getAllBlogs={getAllBlogs}
                 />}></Route>
 
+                {/* What is needed on this page:
+                    User needs to be able to signUp
+                    User needs to be able to Login
+                */}
                 <Route path='/register' 
-                // What is needed on this page:
-                //     User needs to be able to signUp
-                //     User needs to be able to Login
                 element={<AuthPage 
                 // Pass setUser, setToken && signUp props down to AuthPage
                     setUser={setUser}
@@ -190,11 +192,12 @@ export default function App(){
                     login={login}
                 />}></Route>
 
+                {/* What is needed on this page:
+                    Be able to GET an individual blog
+                    Be able to UPDATE blog
+                    Be able to DELETE blog
+                */}
                 <Route path='/blog' 
-                // What is needed on this page:
-                //     Be able to GET an individual blog
-                //     Be able to UPDATE blog
-                //     Be able to DELETE blog
                 element={<ShowPage 
                 // Pass user, token, && setToken props down to HomePage
                     user={user} 
