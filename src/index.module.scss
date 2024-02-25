@@ -1,0 +1,13 @@
+:root {
+    --bg-color: #F0F4EF;
+    --nav-color: #344966;
+    --nav-btn-color: #B4CDED;
+    --nav-btn-border: #0D1821;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}

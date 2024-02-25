@@ -1,0 +1,22 @@
+.button {
+    border: none;
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--bg-color);
+    text-transform: uppercase;
+    border-radius: 10px;
+    background-color: var(--nav-color);
+    margin: 10px 0 0 0;
+    transition: .3s ease;
+    &:hover {
+        transform: scale(1.1);
+        transition: .3s ease;
+        background-color: var(--nav-btn-color);
+        color: var(--nav-btn-border);
+        border: 3px solid var(--nav-btn-border);
+        box-shadow: 0 0 10px var(--nav-btn-border);
+        cursor: pointer;
+    }
+}

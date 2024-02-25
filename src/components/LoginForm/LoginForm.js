@@ -16,17 +16,19 @@ export default function LoginForm (props){
 
     return (
         <>
-            <h2 className={styles.heading}>This is the Login Form</h2>
+        <div className={styles.container}>
+            <h2 className={styles.heading}>This is the <span className={styles.span}>Login</span> Form</h2>
             <form 
                 className={styles.form}
                 onSubmit={(e) => {
                 e.preventDefault()
                 props.login(credentials)
             }}>
-                <input type='email' name='email' onChange={handleChange} value={credentials.email} placeholder='Email' />
-                <input type='password' name='password' onChange={handleChange} value={credentials.password} placeholder='Password' />
-                <input type='submit' value='submit' />
+                <input className={styles.input} type='email' name='email' onChange={handleChange} value={credentials.email} placeholder='Email' />
+                <input className={styles.input} type='password' name='password' onChange={handleChange} value={credentials.password} placeholder='Password' />
+                <input className={styles.button} type='submit' value='submit' />
             </form>
+        </div>
         </>  
     )
 }

@@ -16,7 +16,8 @@ export default function SignUpForm (props){
 
     return (
         <>
-            <h2 className={styles.heading}>This is the Sign Up Form</h2>
+        <div className={styles.container}>
+            <h2 className={styles.heading}>This is the <span className={styles.span}>Sign Up</span> Form</h2>
             <form 
                 className={styles.form}
                 onSubmit={(e) => {
@@ -24,11 +25,12 @@ export default function SignUpForm (props){
                 props.signUp(credentials)
                 window.location.reload()
             }}>
-                <input type='text' name='name' onChange={handleChange} value={credentials.name} placeholder='Name' />
-                <input type='email' name='email' onChange={handleChange} value={credentials.email} placeholder='Email' />
-                <input type='password' name='password' onChange={handleChange} value={credentials.password} placeholder='Password' />
-                <input type='submit' value='submit' />
+                <input className={styles.input} type='text' name='name' onChange={handleChange} value={credentials.name} placeholder='Name' />
+                <input className={styles.input} type='email' name='email' onChange={handleChange} value={credentials.email} placeholder='Email' />
+                <input className={styles.input} type='password' name='password' onChange={handleChange} value={credentials.password} placeholder='Password' />
+                <input className={styles.button} type='submit' value='submit' />
             </form>
+        </div>
         </>  
     )
 }

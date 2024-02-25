@@ -164,66 +164,62 @@ export default function App(){
     }
 
     return (
-        <div className={styles.App}>
-            <NavBar />
-            <Routes>
-                {/* What is needed on this page:
-                    Get all Blog posts when the component mounts 
-                    Create an individual Blog post
-                 */}
-                <Route path='/' 
-                element={<HomePage 
-                // Pass user, token, && setToken props down to HomePage
-                    user={user} 
-                    token={token} 
-                    // nameOfTheProp={nameOfTheFunction}
-                    setToken={setToken}
-                    setUser={setUser}
-                    createBlog={createBlog}
-                    getAllBlogs={getAllBlogs}
-                />}></Route>
+        <>
+            <NavBar 
+                token={token} 
+                setUser={setUser}
+                setToken={setToken}
+                signUp={signUp}
+                login={login}
+            />
+            <div className={styles.container}>
+                <Routes>
+                    {/* What is needed on this page:
+                        Get all Blog posts when the component mounts 
+                        Create an individual Blog post
+                    */}
+                    <Route path='/' 
+                    element={<HomePage 
+                    // Pass user, token, && setToken props down to HomePage
+                        user={user} 
+                        token={token} 
+                        // nameOfTheProp={nameOfTheFunction}
+                        setToken={setToken}
+                        setUser={setUser}
+                        createBlog={createBlog}
+                        getAllBlogs={getAllBlogs}
+                    />}></Route>
 
-                {/* What is needed on this page:
-                    User needs to be able to signUp
-                    User needs to be able to Login
-                */}
-                <Route path='/register' 
-                element={<AuthPage 
-                // Pass setUser, setToken && signUp props down to AuthPage
-                    setUser={setUser}
-                    setToken={setToken}
-                    signUp={signUp}
-                    login={login}
-                />}></Route>
+                    {/* What is needed on this page:
+                        User needs to be able to signUp
+                        User needs to be able to Login
+                    */}
+                    <Route path='/register' 
+                    element={<AuthPage 
+                    // Pass setUser, setToken && signUp props down to AuthPage
+                        setUser={setUser}
+                        setToken={setToken}
+                        signUp={signUp}
+                        login={login}
+                    />}></Route>
 
-                {/* What is needed on this page:
-                    Be able to GET an individual blog
-                    Be able to UPDATE blog
-                    Be able to DELETE blog
-                */}
-                <Route path='/blog' 
-                element={<ShowPage 
-                // Pass user, token, && setToken props down to HomePage
-                    user={user} 
-                    token={token} 
-                    setToken={setToken}
-                    getIndividualBlog={getIndividualBlog}
-                    updateBlog={updateBlog}
-                    deleteBlog={deleteBlog}
-                />}></Route>
-            </Routes>
-            {
-            token ?
-            <button 
-            className={styles.button}
-            onClick={() => {
-                localStorage.removeItem('token')
-                window.location.reload()
-            }}>
-                Logout
-            </button>:
-            ''
-            }
-        </div>
+                    {/* What is needed on this page:
+                        Be able to GET an individual blog
+                        Be able to UPDATE blog
+                        Be able to DELETE blog
+                    */}
+                    <Route path='/blog' 
+                    element={<ShowPage 
+                    // Pass user, token, && setToken props down to HomePage
+                        user={user} 
+                        token={token} 
+                        setToken={setToken}
+                        getIndividualBlog={getIndividualBlog}
+                        updateBlog={updateBlog}
+                        deleteBlog={deleteBlog}
+                    />}></Route>
+                </Routes>
+            </div>
+        </>
     )
 }
