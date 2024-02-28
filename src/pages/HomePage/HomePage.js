@@ -30,6 +30,9 @@ export default function HomePage(props){
         if(localStorage.token && localStorage.user && !props.user){
             props.setUser(JSON.parse(localStorage.getItem('user')))
         }
+        if(props.token){
+            setShowCreate(true)
+        }
     }, [])
 
     return (

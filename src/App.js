@@ -208,15 +208,15 @@ export default function App(){
                         Be able to UPDATE blog
                         Be able to DELETE blog
                     */}
-                    <Route path='/blog' 
+                    <Route path='/blog/:id' 
                     element={<ShowPage 
-                    // Pass user, token, && setToken props down to HomePage
                         user={user} 
                         token={token} 
                         setToken={setToken}
+                        setUser={setUser}
                         getIndividualBlog={getIndividualBlog}
-                        updateBlog={updateBlog}
                         deleteBlog={deleteBlog}
+                        updateBlog={updateBlog}
                     />}></Route>
                 </Routes>
             </div>
