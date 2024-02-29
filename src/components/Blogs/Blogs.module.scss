@@ -12,7 +12,8 @@
         color: white;
         font-size: 25px;
         text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);
-        &:hover {
+        
+        .title:hover {
             color: var(--nav-btn-border);
             text-shadow: -1.5px -1.5px 0 white, 1.5px -1.5px 0 white, -1.5px 1.5px 0 white, 1.5px 1.5px 0 white;
         }
