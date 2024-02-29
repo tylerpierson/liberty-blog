@@ -12,6 +12,9 @@
         color: white;
         font-size: 25px;
         text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);
+        &:hover {
+            opacity: .6;
+        }
     }
     .p {
         font-size: 18px;
