@@ -6,8 +6,8 @@ export default function Blogs(props) {
         {props.blogs.map((blog) => {
             return(
             <article className={styles.article} key={blog._id}>
-                <h3 className={styles.title}>{blog.title}</h3>
-                <Link to={`/blog/${blog._id}`} className={styles.link}>This the link to the Show Page of {`${blog._id}`}</Link>
+                <Link to={`/blog/${blog._id}`} className={styles.link}><h3 className={styles.title}>{blog.title}</h3></Link>
+                <p className={styles.p}>{blog.body}</p>
             </article>)
         })}
     </div>)

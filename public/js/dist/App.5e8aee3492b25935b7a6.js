@@ -264,12 +264,14 @@ function Blogs(props) {
     return /*#__PURE__*/React.createElement("article", {
       className: _Blogs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].article,
       key: blog._id
-    }, /*#__PURE__*/React.createElement("h3", {
-      className: _Blogs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].title
-    }, blog.title), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    }, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
       to: "/blog/".concat(blog._id),
       className: _Blogs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].link
-    }, "This the link to the Show Page of ", "".concat(blog._id)));
+    }, /*#__PURE__*/React.createElement("h3", {
+      className: _Blogs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].title
+    }, blog.title)), /*#__PURE__*/React.createElement("p", {
+      className: _Blogs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].p
+    }, blog.body));
   }));
 }
 
@@ -872,15 +874,27 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, `.cQl1jo20z9hhklDf9EHX {
   background-color: var(--nav-btn-color);
   border: 3px solid var(--nav-btn-border);
+  border-radius: 10px;
   margin-top: 25px;
   min-height: 200px;
   min-width: 600px;
   padding: 1rem;
   align-items: center;
-}`, "",{"version":3,"sources":["webpack://./src/components/Blogs/Blogs.module.scss"],"names":[],"mappings":"AAAA;EACI,sCAAA;EACA,uCAAA;EACA,gBAAA;EACA,iBAAA;EACA,gBAAA;EACA,aAAA;EACA,mBAAA;AACJ","sourcesContent":[".article {\n    background-color: var(--nav-btn-color);\n    border: 3px solid var(--nav-btn-border);\n    margin-top: 25px;\n    min-height: 200px;\n    min-width: 600px;\n    padding: 1rem;\n    align-items: center;\n    \n}"],"sourceRoot":""}]);
+}
+.cQl1jo20z9hhklDf9EHX .h9EJCWob4jMR0QrnmEGi {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);
+}
+.cQl1jo20z9hhklDf9EHX .phmMPym7gat2V3saIx5_ {
+  font-size: 18px;
+}`, "",{"version":3,"sources":["webpack://./src/components/Blogs/Blogs.module.scss"],"names":[],"mappings":"AAAA;EACI,sCAAA;EACA,uCAAA;EACA,mBAAA;EACA,gBAAA;EACA,iBAAA;EACA,gBAAA;EACA,aAAA;EACA,mBAAA;AACJ;AAAI;EACI,qBAAA;EACA,YAAA;EACA,eAAA;EACA,mKAAA;AAER;AAAI;EACI,eAAA;AAER","sourcesContent":[".article {\n    background-color: var(--nav-btn-color);\n    border: 3px solid var(--nav-btn-border);\n    border-radius: 10px;\n    margin-top: 25px;\n    min-height: 200px;\n    min-width: 600px;\n    padding: 1rem;\n    align-items: center;\n    .link {\n        text-decoration: none;\n        color: white;\n        font-size: 25px;\n        text-shadow: -1.5px -1.5px 0 var(--nav-btn-border), 1.5px -1.5px 0 var(--nav-btn-border), -1.5px 1.5px 0 var(--nav-btn-border), 1.5px 1.5px 0 var(--nav-btn-border);\n    }\n    .p {\n        font-size: 18px;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"article": `cQl1jo20z9hhklDf9EHX`
+	"article": `cQl1jo20z9hhklDf9EHX`,
+	"link": `h9EJCWob4jMR0QrnmEGi`,
+	"p": `phmMPym7gat2V3saIx5_`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2134,4 +2148,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.c74dec8a6fb299477d85f9438906fdee.js.map
+//# sourceMappingURL=App.c69dc59c980cb3ca27118bcb9768ccc1.js.map
